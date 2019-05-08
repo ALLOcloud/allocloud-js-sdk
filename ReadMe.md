@@ -2,7 +2,7 @@
 
 An isomorphic/universal promise based interface to the ALLOcloud API.
 
-[![CircleCI](https://circleci.com/gh/ALLOcloud/allocloud-js-sdk.svg?style=svg)](https://circleci.com/gh/ALLOcloud/allocloud-js-sdk)
+[![CircleCI](https://img.shields.io/circleci/project/github/ALLOcloud/allocloud-js-sdk.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/ALLOcloud/allocloud-js-sdk) [![npm](https://img.shields.io/npm/v/allocloud-js-sdk.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/allocloud-js-sdk)
 
 ## Install
 
