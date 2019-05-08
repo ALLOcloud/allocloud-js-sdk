@@ -11,6 +11,11 @@ export interface RequestPerformer<T, U> {
 export interface ResponseParser<U> {
     parseResponse(response: U): Promise<any>;
 }
+export declare type APIError = {
+    type: string;
+    details: string;
+    message: string;
+};
 /** Caller ID */
 export declare type CallerID = {
     internal: {

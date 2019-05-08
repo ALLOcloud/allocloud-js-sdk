@@ -1,5 +1,8 @@
+import { APIError } from "./types";
 export default class ClientError extends Error {
     response: Response;
-    body: Object;
-    constructor(response: Response, body: Object);
+    _message: string;
+    details: string;
+    type: string;
+    constructor(response: Response, error?: APIError);
 }
