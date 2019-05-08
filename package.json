@@ -1,0 +1,59 @@
+{
+  "name": "allocloud-js-sdk",
+  "version": "3.0.0",
+  "description": "An isomorphic/universal promise based interface to the ALLOcloud API",
+  "license": "MIT",
+  "repository": "https://github.com/allocloud/allocloud-js-sdk",
+  "main": "lib/index.js",
+  "typings": "typings/index.d.ts",
+  "files": [
+    "lib",
+    "typings"
+  ],
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "lint": "eslint src",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:format": "prettier --list-different --single-quote --trailing-comma none --write src/**/*.js",
+    "format": "prettier --single-quote --trailing-comma none --write src/**/*.js",
+    "ci": "npm run lint && npm run test && npm run test:format && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.3",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "benchmark": "^2.1.4",
+    "bluebird": "^3.5.4",
+    "eslint": "^4.7.2",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "jest": "^21.2.0",
+    "prettier": "^1.16.4",
+    "save": "^2.3.3",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.0.2",
+    "query-string": "^6.5.0",
+    "universal-url": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/",
+      "(<rootDir>/__tests__/.*|(\\.|/)utils)\\.jsx?$"
+    ]
+  }
+}
