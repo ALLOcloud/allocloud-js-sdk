@@ -8,7 +8,8 @@ An isomorphic/universal promise based interface to the ALLOcloud API.
 
 ```shell
 $ yarn add allocloud-js-sdk
-# Enjoy the SDK api.
+# or with NPM
+$ npm install --save allocloud-js-sdk
 ```
 
 ## Usage
@@ -19,26 +20,28 @@ See [typings](typings/index.d.ts) for available method while we don't have prope
 import ALLOcloud from "allocloud-js-sdk";
 
 const API_KEY = process.env.ALLOCLOUD_API_KEY;
-const client = ALLOcloud.create(API_KEY);
 
 const main = async () => {
-  try {
-    await client.authenticate();
-  } catch (err) {
-    console.error("Authentication failed. Error:", err.message);
-  }
+  const client = await ALLOcloud.create(API_KEY);
 
-  try {
-    const devices = await client.listDevices();
-    const deviceThree = await client.getDevice(3);
-    const contacts = await client.listContacts();
+  const devices = await client.listDevices();
+  const deviceThree = await client.getDevice(3);
+  const contacts = await client.listContacts();
 
-    console.log("Devices count:", devices.length);
-    console.log("Contacts count:", contacts.length);
-    console.log("Device (id: 3) name:", deviceThree.name);
-  } catch (err) {
-    console.error("Data request(s) failed. Error:", err.message);
-  }
+  console.log("Devices count:", devices.length);
+  console.log("Contacts count:", contacts.length);
+  console.log("Device (id: 3) name:", deviceThree.name);
+
+  const newCalendar = {
+    name: "My super new calendar",
+    is_external_calendar: false,
+    ics: "BEGIN:VCALENDAR\nVERSION:2.0\n{ICS_DATA_HERE}\nEND:VCALENDAR",
+    url: "",
+    time_zone: "Europe/Brussels"
+  };
+
+  const calendar = await client.createCalendar(newCalendar);
+  console.log("New calendar created. id:", calendar.id);
 };
 
 main();
