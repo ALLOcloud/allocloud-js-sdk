@@ -30,4 +30,4 @@ jobs:
           name: Run unit tests
           command: yarn run ci
       - store_test_results:
-path: /allocloud-sdk-js/artifacts
+        path: /allocloud-sdk-js/artifacts
