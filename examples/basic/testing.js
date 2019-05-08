@@ -1,7 +1,7 @@
 const ALLOcloud = require("allocloud-js-sdk").default;
 
 const main = async () => {
-  const API_KEY = "UNOLQpW1XR7oDX9DINvHZGlCYJzaEtV7U8C5qdft2c_2ED7FzlkGyQ";
+  const API_KEY = process.env.ALLOCLOUD_API_KEY;
   const opts = {
     baseUrl: "https://wn.allocloud.com",
     version: "v3.0"
