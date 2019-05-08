@@ -9,6 +9,7 @@ jobs:
           TERM: dumb # See: https://github.com/facebook/flow/pull/3305
           JEST_JUNIT_OUTPUT: ./artifacts/junit.xml
     steps:
+      - checkout
       - run:
           name: Pre-Dependencies
           command: mkdir -p /allocloud-sdk-js/artifacts
