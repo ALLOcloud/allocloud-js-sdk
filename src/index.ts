@@ -99,7 +99,7 @@ class Client<RequestType, ResponseType> {
 
   createResource<T>(uri: string, params: Object): Promise<T> {
     const req = this.requestFactory.createRequest(uri, "PUT", {
-      data: { params }
+      data: { ...params }
     });
     return this.requestPerformer
       .performRequest(req)
@@ -108,7 +108,7 @@ class Client<RequestType, ResponseType> {
 
   updateResource<T>(uri: string, params: Object): Promise<T> {
     const req = this.requestFactory.createRequest(uri, "POST", {
-      data: { params }
+      data: { ...params }
     });
     return this.requestPerformer
       .performRequest(req)
@@ -117,7 +117,7 @@ class Client<RequestType, ResponseType> {
 
   deleteResource<T>(uri: string, params?: Object): Promise<T> {
     const req = this.requestFactory.createRequest(uri, "DELETE", {
-      data: { params }
+      data: { ...params }
     });
     return this.requestPerformer
       .performRequest(req)
