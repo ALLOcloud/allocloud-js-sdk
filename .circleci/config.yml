@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /allocloud-sdk-js
     docker:
-      - image: clubhouseio/clubhouse-node-flow-primary:0.0.1
+      - image: circleci/node:latest
         environment:
           ENV: CI
           TERM: dumb # See: https://github.com/facebook/flow/pull/3305
