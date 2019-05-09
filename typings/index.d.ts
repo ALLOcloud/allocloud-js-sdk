@@ -2,7 +2,7 @@ import {
 /** Client requests. */
 RequestFactory, RequestPerformer, ResponseParser, 
 /** Data types. */
-ID, Account, Device, DeviceRegistration, DeviceStatus, Calendar, Callflow, HistoryCall, Conference, ReadAllShort, Contact, ContactUpdate, ContactDeleteResponse, FunctionKey } from "./types";
+ID, Account, Device, DeviceRegistration, DeviceStatus, Calendar, Callflow, HistoryCall, Conference, ReadAllShort, Contact, ContactUpdate, ContactDeleteResponse, FunctionKey, Group, Media, Menu, Network, PhoneNumber, PhoneNumberCreate, PhoneNumberUpdate, Recording, Trunk, User, VoicemailBox } from "./types";
 interface ClientConfig {
     baseUrl: string;
     version: string;
@@ -79,5 +79,71 @@ declare class Client<RequestType, ResponseType> {
     /** Function Keys */
     listDeviceFunctionKeys(deviceId: ID): Promise<FunctionKey[]>;
     updateDeviceFunctionKeys(deviceId: ID, params: FunctionKey): Promise<FunctionKey[]>;
+    /** Groups */
+    listGroups(): Promise<Group[]>;
+    getGroup(id: ID): Promise<Group>;
+    createGroup(params: Group): Promise<Group>;
+    updateGroup(id: ID, params: Group): Promise<Group>;
+    deleteGroup(id: ID): Promise<{
+        group_id: ID;
+    }>;
+    /** Medias */
+    listMedias(): Promise<Media[]>;
+    getMedia(id: ID): Promise<Media>;
+    getMediaRaw(id: ID): Promise<Media>;
+    createMedia(params: Media): Promise<Media>;
+    updateMedia(id: ID, params: Media): Promise<Media>;
+    deleteMedia(id: ID): Promise<{
+        media_id: ID;
+    }>;
+    /** Menus */
+    listMenus(): Promise<Menu[]>;
+    getMenu(id: ID): Promise<Menu>;
+    createMenu(params: Menu): Promise<Menu>;
+    updateMenu(id: ID, params: Menu): Promise<Menu>;
+    deleteMenu(id: ID): Promise<{
+        menu_id: ID;
+    }>;
+    /** Networks */
+    listNetworks(): Promise<Network[]>;
+    /** Phone numbers */
+    listPhoneNumbers(): Promise<PhoneNumber[]>;
+    getPhoneNumber(id: ID): Promise<PhoneNumber>;
+    createPhoneNumber(params: PhoneNumberCreate): Promise<PhoneNumber>;
+    updatePhoneNumber(params: PhoneNumberUpdate): Promise<PhoneNumberUpdate>;
+    deletePhoneNumber(id: ID): Promise<{
+        phone_number_id: ID;
+    }>;
+    /** Recordings */
+    listRecordings(): Promise<Recording[]>;
+    getRecording(id: ID): Promise<Recording>;
+    getRecordingRaw(id: ID): Promise<Recording>;
+    deleteRecording(id: ID): Promise<{
+        recording_id: ID;
+    }>;
+    /** Trunks */
+    listTrunks(): Promise<Trunk[]>;
+    getTrunk(id: ID): Promise<Trunk>;
+    createTrunk(params: Trunk): Promise<Trunk>;
+    updateTrunk(id: ID, params: Trunk): Promise<Trunk>;
+    deleteTrunk(id: ID): Promise<{
+        trunk_id: ID;
+    }>;
+    /** Users */
+    listUsers(): Promise<User[]>;
+    getUser(id: ID): Promise<User>;
+    createUser(params: User): Promise<User>;
+    updateUser(id: ID, params: User): Promise<User>;
+    deleteUser(id: ID): Promise<{
+        user_id: ID;
+    }>;
+    /** Voicemails Boxes */
+    listVoicemailBoxes(): Promise<VoicemailBox[]>;
+    getVoicemailBox(id: ID): Promise<VoicemailBox>;
+    createVoicemailBox(params: VoicemailBox): Promise<VoicemailBox>;
+    updateVoicemailBox(id: ID, params: VoicemailBox): Promise<VoicemailBox>;
+    deleteVoicemailBox(id: ID): Promise<{
+        vmbox_id: ID;
+    }>;
 }
 export default Client;
