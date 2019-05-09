@@ -82,15 +82,19 @@ class Client<RequestType, ResponseType> {
     apiKey: string,
     config: ClientConfig = defaultConfig
   ): Promise<Client<any, any>> {
-    const { baseUrl, version } = config;
-    const authToken = await Client.getAuthTokenFromAPIKey(apiKey, config);
-    const client = new Client(
-      new TokenRequestFactory(authToken, baseUrl, version),
-      new FetchRequestPerformer(),
-      new FetchRequestParser()
-    );
+    try {
+      const { baseUrl, version } = config;
+      const authToken = await Client.getAuthTokenFromAPIKey(apiKey, config);
+      const client = new Client(
+        new TokenRequestFactory(authToken, baseUrl, version),
+        new FetchRequestPerformer(),
+        new FetchRequestParser()
+      );
 
-    return Promise.resolve(client);
+      return Promise.resolve(client);
+    } catch (err) {
+      return Promise.reject(err);
+    }
   }
 
   private listResource<T>(uri: string): Promise<T[]> {
@@ -135,10 +139,6 @@ class Client<RequestType, ResponseType> {
       .performRequest(req)
       .then(this.responseParser.parseResponse);
   }
-
-  /**
-   * ALLOcloud types
-   */
 
   /** Accounts */
   getAccount(): Promise<Account> {
