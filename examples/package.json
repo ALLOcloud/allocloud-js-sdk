@@ -2,6 +2,6 @@
   "name": "examples",
   "private": true,
   "dependencies": {
-    "allocloud-js-sdk": "link:.."
+    "@allocloud/js-sdk": "link:.."
   }
 }

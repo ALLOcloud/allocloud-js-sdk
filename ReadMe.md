@@ -9,15 +9,15 @@ An isomorphic/universal promise based interface to the ALLOcloud API.
 ## Install
 
 ```shell
-$ yarn add allocloud-js-sdk
+$ yarn add @allocloud/js-sdk
 # or with NPM
-$ npm install --save allocloud-js-sdk
+$ npm install --save @allocloud/js-sdk
 ```
 
 ## Usage
 
 ```js
-import ALLOcloud from "allocloud-js-sdk";
+import ALLOcloud from "@allocloud/js-sdk";
 
 const API_KEY = process.env.ALLOCLOUD_API_KEY;
 

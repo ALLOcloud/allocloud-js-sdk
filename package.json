@@ -1,6 +1,6 @@
 {
-  "name": "allocloud-js-sdk",
-  "version": "3.2.0",
+  "name": "@allocloud/js-sdk",
+  "version": "1.0.0",
   "description": "An isomorphic/universal promise based interface to the ALLOcloud API",
   "license": "MIT",
   "repository": "https://github.com/allocloud/allocloud-js-sdk",
@@ -49,6 +49,7 @@
     "cross-fetch": "^3.0.2",
     "gh-pages": "^2.0.1",
     "query-string": "^6.5.0",
+    "semantic-release": "^15.13.12",
     "typedoc": "^0.14.2",
     "universal-url": "^2.0.0"
   },

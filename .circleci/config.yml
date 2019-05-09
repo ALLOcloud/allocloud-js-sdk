@@ -1,9 +1,8 @@
 version: 2
 jobs:
-  build:
-    working_directory: /allocloud-sdk-js
+  test_node_8:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:8
         environment:
           ENV: CI
           TERM: dumb # See: https://github.com/facebook/flow/pull/3305
@@ -12,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Pre-Dependencies
-          command: mkdir -p /allocloud-sdk-js/artifacts
+          command: mkdir -p /tmp/allocloud-sdk-js/artifacts
       - restore_cache:
           keys:
             - v1-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -25,9 +24,27 @@ jobs:
       - save_cache:
           key: v1-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - /allocloud-sdk-js/node_modules
+            - /tmp/allocloud-sdk-js/node_modules
       - run:
           name: Run unit tests
           command: yarn run ci
       - store_test_results:
-          path: /allocloud-sdk-js/artifacts
+          path: /tmp/allocloud-sdk-js/artifacts
+  release:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: npx semantic-release
+
+workflows:
+  version: 2
+  test_and_release:
+    # Run the test jobs first, then the release only when all the test jobs are successful
+    jobs:
+      - test_node_8
+      - release:
+          requires:
+            - test_node_8
