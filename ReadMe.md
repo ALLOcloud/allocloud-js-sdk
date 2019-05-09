@@ -4,6 +4,8 @@ An isomorphic/universal promise based interface to the ALLOcloud API.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/ALLOcloud/allocloud-js-sdk.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/ALLOcloud/allocloud-js-sdk) [![npm](https://img.shields.io/npm/v/allocloud-js-sdk.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/allocloud-js-sdk)
 
+[Documentation](https://allocloud.github.io/allocloud-js-sdk/)
+
 ## Install
 
 ```shell
@@ -13,8 +15,6 @@ $ npm install --save allocloud-js-sdk
 ```
 
 ## Usage
-
-See [typings](typings/index.d.ts) for available method while we don't have proper documentation for this lib. Plan is to use typedoc so we can infer documentation from typings and get things done faster.
 
 ```js
 import ALLOcloud from "allocloud-js-sdk";
