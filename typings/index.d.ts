@@ -22,9 +22,6 @@ declare class Client<RequestType, ResponseType> {
     private createResource;
     private updateResource;
     private deleteResource;
-    /**
-     * ALLOcloud types
-     */
     /** Accounts */
     getAccount(): Promise<Account>;
     /** Calendars */

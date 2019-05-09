@@ -43,14 +43,13 @@
     "jest": "^21.2.0",
     "prettier": "^1.16.4",
     "save": "^2.3.3",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "semantic-release": "^15.13.12",
+    "typedoc": "^0.14.2",
+    "gh-pages": "^2.0.1"
   },
   "dependencies": {
     "cross-fetch": "^3.0.2",
-    "gh-pages": "^2.0.1",
-    "query-string": "^6.5.0",
-    "semantic-release": "^15.13.12",
-    "typedoc": "^0.14.2",
     "universal-url": "^2.0.0"
   },
   "jest": {
