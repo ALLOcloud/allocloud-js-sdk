@@ -19,7 +19,7 @@
     "test:format": "prettier --list-different --single-quote --trailing-comma none --write src/**/*.js",
     "format": "prettier --single-quote --trailing-comma none --write src/**/*.js",
     "ci": "npm run lint && npm run test && npm run build",
-    "docs:generate": "typedoc --out docs src/index.ts",
+    "docs:generate": "typedoc --disableOutputCheck --out docs src/index.ts",
     "docs:deploy": "gh-pages -d docs"
   },
   "devDependencies": {
