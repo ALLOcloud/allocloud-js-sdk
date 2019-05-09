@@ -14,14 +14,15 @@ jobs:
           command: mkdir -p /tmp/allocloud-sdk-js/artifacts
       - restore_cache:
           keys:
-            - v1-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - v1-dependency-cache-{{ .Branch }}
-            - v1-dependency-cache-master-{{ checksum "yarn.lock" }}
+            - v2-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - v2-dependency-cache-{{ .Branch }}
+            - v2-dependency-cache-master-{{ checksum "yarn.lock" }}
+            - v2-dependency-cache-master
       - run:
           name: Install Node Modules
           command: yarn install
       - save_cache:
-          key: v1-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: v2-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - /tmp/allocloud-sdk-js/node_modules
       - run:
