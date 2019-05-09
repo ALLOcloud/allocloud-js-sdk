@@ -93,14 +93,14 @@ class Client<RequestType, ResponseType> {
     return Promise.resolve(client);
   }
 
-  listResource<T>(uri: string): Promise<T[]> {
+  private listResource<T>(uri: string): Promise<T[]> {
     const req = this.requestFactory.createRequest(uri);
     return this.requestPerformer
       .performRequest(req)
       .then(this.responseParser.parseResponse);
   }
 
-  getResource<T>(uri: string, params?: Object): Promise<T> {
+  private getResource<T>(uri: string, params?: Object): Promise<T> {
     const req = params
       ? this.requestFactory.createRequest(uri, "GET", params)
       : this.requestFactory.createRequest(uri);
@@ -109,7 +109,7 @@ class Client<RequestType, ResponseType> {
       .then(this.responseParser.parseResponse);
   }
 
-  createResource<T>(uri: string, params: Object): Promise<T> {
+  private createResource<T>(uri: string, params: Object): Promise<T> {
     const req = this.requestFactory.createRequest(uri, "PUT", {
       data: { ...params }
     });
@@ -118,7 +118,7 @@ class Client<RequestType, ResponseType> {
       .then(this.responseParser.parseResponse);
   }
 
-  updateResource<T>(uri: string, params: Object): Promise<T> {
+  private updateResource<T>(uri: string, params: Object): Promise<T> {
     const req = this.requestFactory.createRequest(uri, "POST", {
       data: { ...params }
     });
@@ -127,7 +127,7 @@ class Client<RequestType, ResponseType> {
       .then(this.responseParser.parseResponse);
   }
 
-  deleteResource<T>(uri: string, params?: Object): Promise<T> {
+  private deleteResource<T>(uri: string, params?: Object): Promise<T> {
     const req = this.requestFactory.createRequest(uri, "DELETE", {
       data: { ...params }
     });
