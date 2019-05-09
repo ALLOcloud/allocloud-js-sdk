@@ -24,7 +24,19 @@ import {
   Contact,
   ContactUpdate,
   ContactDeleteResponse,
-  FunctionKey
+  FunctionKey,
+  Group,
+  Media,
+  Menu,
+  NetworksResponse,
+  Network,
+  PhoneNumber,
+  PhoneNumberCreate,
+  PhoneNumberUpdate,
+  Recording,
+  Trunk,
+  User,
+  VoicemailBox
 } from "./types";
 
 interface ClientConfig {
@@ -282,6 +294,188 @@ class Client<RequestType, ResponseType> {
     params: FunctionKey
   ): Promise<FunctionKey[]> {
     return this.updateResource(`function_keys/device/${deviceId}`, params);
+  }
+
+  /** Groups */
+  listGroups(): Promise<Group[]> {
+    return this.listResource("groups");
+  }
+
+  getGroup(id: ID): Promise<Group> {
+    return this.getResource(`groups/${id}`);
+  }
+
+  createGroup(params: Group): Promise<Group> {
+    return this.createResource("groups", params);
+  }
+
+  updateGroup(id: ID, params: Group): Promise<Group> {
+    return this.updateResource("groups", { id, ...params });
+  }
+
+  deleteGroup(id: ID): Promise<{ group_id: ID }> {
+    return this.deleteResource(`groups/${id}`);
+  }
+
+  /** Medias */
+  listMedias(): Promise<Media[]> {
+    return this.listResource("medias");
+  }
+
+  getMedia(id: ID): Promise<Media> {
+    return this.getResource(`medias/${id}`);
+  }
+
+  getMediaRaw(id: ID): Promise<Media> {
+    return this.getResource(`medias/${id}/raw`);
+  }
+
+  createMedia(params: Media): Promise<Media> {
+    return this.createResource("medias", params);
+  }
+
+  updateMedia(id: ID, params: Media): Promise<Media> {
+    return this.updateResource("medias", { id, ...params });
+  }
+
+  deleteMedia(id: ID): Promise<{ media_id: ID }> {
+    return this.deleteResource(`medias/${id}`);
+  }
+
+  /** Menus */
+  listMenus(): Promise<Menu[]> {
+    return this.listResource("menus");
+  }
+
+  getMenu(id: ID): Promise<Menu> {
+    return this.getResource(`menus/${id}`);
+  }
+
+  createMenu(params: Menu): Promise<Menu> {
+    return this.createResource("menus", params);
+  }
+
+  updateMenu(id: ID, params: Menu): Promise<Menu> {
+    return this.updateResource("menus", { id, ...params });
+  }
+
+  deleteMenu(id: ID): Promise<{ menu_id: ID }> {
+    return this.deleteResource(`menus/${id}`);
+  }
+
+  /** Networks */
+  async listNetworks(): Promise<Network[]> {
+    const req = (await this.getResource("networks")) as NetworksResponse;
+    return req.networks;
+  }
+
+  /** Phone numbers */
+  async listPhoneNumbers(): Promise<PhoneNumber[]> {
+    const numbers = await this.listResource("phone_numbers");
+    return Object.keys(numbers).reduce((acc, key) => {
+      const num = numbers[key];
+      acc[acc.length] = {
+        id: key,
+        ...num
+      };
+      return acc;
+    }, []);
+  }
+
+  getPhoneNumber(id: ID): Promise<PhoneNumber> {
+    return this.getResource(`phone_numbers/${id}`);
+  }
+
+  createPhoneNumber(params: PhoneNumberCreate): Promise<PhoneNumber> {
+    return this.createResource("phone_numbers", params);
+  }
+
+  updatePhoneNumber(params: PhoneNumberUpdate): Promise<PhoneNumberUpdate> {
+    return this.updateResource("phone_numbers", params);
+  }
+
+  deletePhoneNumber(id: ID): Promise<{ phone_number_id: ID }> {
+    return this.deleteResource(`phone_numbers/${id}`);
+  }
+
+  /** Recordings */
+  listRecordings(): Promise<Recording[]> {
+    return this.listResource("recordings");
+  }
+
+  getRecording(id: ID): Promise<Recording> {
+    return this.getResource(`recordings/${id}`);
+  }
+
+  getRecordingRaw(id: ID): Promise<Recording> {
+    return this.getResource(`recordings/${id}/raw`);
+  }
+
+  deleteRecording(id: ID): Promise<{ recording_id: ID }> {
+    return this.deleteResource(`recordings/${id}`);
+  }
+
+  /** Trunks */
+  listTrunks(): Promise<Trunk[]> {
+    return this.listResource("trunks");
+  }
+
+  getTrunk(id: ID): Promise<Trunk> {
+    return this.getResource(`trunks/${id}`);
+  }
+
+  createTrunk(params: Trunk): Promise<Trunk> {
+    return this.createResource("trunks", params);
+  }
+
+  updateTrunk(id: ID, params: Trunk): Promise<Trunk> {
+    return this.updateResource("trunks", { id, ...params });
+  }
+
+  deleteTrunk(id: ID): Promise<{ trunk_id: ID }> {
+    return this.deleteResource(`trunks/${id}`);
+  }
+
+  /** Users */
+  listUsers(): Promise<User[]> {
+    return this.listResource("users");
+  }
+
+  getUser(id: ID): Promise<User> {
+    return this.getResource(`users/${id}`);
+  }
+
+  createUser(params: User): Promise<User> {
+    return this.createResource("users", params);
+  }
+
+  updateUser(id: ID, params: User): Promise<User> {
+    return this.updateResource("users", { id, ...params });
+  }
+
+  deleteUser(id: ID): Promise<{ user_id: ID }> {
+    return this.deleteResource(`users/${id}`);
+  }
+
+  /** Voicemails Boxes */
+  listVoicemailBoxes(): Promise<VoicemailBox[]> {
+    return this.listResource("vmboxes");
+  }
+
+  getVoicemailBox(id: ID): Promise<VoicemailBox> {
+    return this.getResource(`vmboxes/${id}`);
+  }
+
+  createVoicemailBox(params: VoicemailBox): Promise<VoicemailBox> {
+    return this.createResource("vmboxes", params);
+  }
+
+  updateVoicemailBox(id: ID, params: VoicemailBox): Promise<VoicemailBox> {
+    return this.updateResource("vmboxes", { id, ...params });
+  }
+
+  deleteVoicemailBox(id: ID): Promise<{ vmbox_id: ID }> {
+    return this.deleteResource(`vmboxes/${id}`);
   }
 }
 
