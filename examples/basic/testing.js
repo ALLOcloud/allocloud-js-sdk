@@ -1,4 +1,4 @@
-const ALLOcloud = require("allocloud-js-sdk").default;
+const ALLOcloud = require("@allocloud/js-sdk").default;
 
 const main = async () => {
   const API_KEY = process.env.ALLOCLOUD_API_KEY;

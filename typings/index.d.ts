@@ -17,11 +17,11 @@ declare class Client<RequestType, ResponseType> {
     constructor(requestFactory: RequestFactory<RequestType>, requestPerformer: RequestPerformer<RequestType, ResponseType>, responseParser: ResponseParser<ResponseType>);
     static getAuthTokenFromAPIKey(apiKey: string, config: ClientConfig): Promise<any>;
     static create(apiKey: string, config?: ClientConfig): Promise<Client<any, any>>;
-    listResource<T>(uri: string): Promise<T[]>;
-    getResource<T>(uri: string, params?: Object): Promise<T>;
-    createResource<T>(uri: string, params: Object): Promise<T>;
-    updateResource<T>(uri: string, params: Object): Promise<T>;
-    deleteResource<T>(uri: string, params?: Object): Promise<T>;
+    private listResource;
+    private getResource;
+    private createResource;
+    private updateResource;
+    private deleteResource;
     /**
      * ALLOcloud types
      */
