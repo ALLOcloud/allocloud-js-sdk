@@ -18,7 +18,9 @@
     "test": "jest",
     "test:format": "prettier --list-different --single-quote --trailing-comma none --write src/**/*.js",
     "format": "prettier --single-quote --trailing-comma none --write src/**/*.js",
-    "ci": "npm run lint && npm run test && npm run build"
+    "ci": "npm run lint && npm run test && npm run build",
+    "docs:generate": "typedoc --out docs src/index.ts",
+    "docs:deploy": "gh-pages -d docs"
   },
   "devDependencies": {
     "@types/node": "^10.11.3",
@@ -45,7 +47,9 @@
   },
   "dependencies": {
     "cross-fetch": "^3.0.2",
+    "gh-pages": "^2.0.1",
     "query-string": "^6.5.0",
+    "typedoc": "^0.14.2",
     "universal-url": "^2.0.0"
   },
   "jest": {
