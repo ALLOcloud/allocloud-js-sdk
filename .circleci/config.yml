@@ -17,7 +17,6 @@ jobs:
             - v1-dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - v1-dependency-cache-{{ .Branch }}
             - v1-dependency-cache-master-{{ checksum "yarn.lock" }}
-            - v1-dependency-cache-master
       - run:
           name: Install Node Modules
           command: yarn install
