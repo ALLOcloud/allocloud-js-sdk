@@ -44,7 +44,7 @@
     "prettier": "^1.16.4",
     "save": "^2.3.3",
     "typescript": "^3.4.5",
-    "semantic-release": "^15.13.12",
+    "semantic-release": "^17.2.3",
     "typedoc": "^0.14.2",
     "gh-pages": "^2.0.1"
   },
